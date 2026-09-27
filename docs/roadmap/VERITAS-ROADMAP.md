@@ -28,8 +28,9 @@ AUDITAR → DEFINIR MENOR ESCOPO → IMPLEMENTAR → TESTAR → CORRIGIR → TES
 **Dependências:** PHASE 0.
 **Entregáveis:** inventário; matriz REUSE/ADAPT/REWRITE/DISCARD; riscos e evidências.
 **Critérios de aceitação:** auditoria completa e independente, sem reutilização presumida.
-**Estado:** PLANNED.
-**Evidência esperada:** relatório técnico versionado e auditável.
+**Estado:** VALIDATED.
+**Evidência:** EXECUÇÃO 02 — auditoria documental e técnica registrada em `docs/audits/ARGOS-AUDIT.md`, `docs/audits/ARGOS-REUSE-MATRIX.md` e `docs/audits/INFRASTRUCTURE-AUDIT.md`; Argos permaneceu intocado; Supabase foi auditado somente em leitura; Vercel foi auditado até o limite de acesso disponível; riscos de segurança e limitações foram registrados; diff do Veritas foi auditado; commit de fechamento registrado no próprio repositório.
+**Limitações:** projeto Vercel explicitamente ligado ao Argos não foi exposto pelo acesso disponível; logs Supabase não puderam ser consultados por erro do backend; segredos não foram lidos; nenhuma afirmação foi inferida para preencher essas lacunas.
 
 ## PHASE 2 — ARCHITECTURE
 **Objetivo:** detalhar boundaries, contratos, dependências e arquitetura executável do Veritas.
@@ -190,6 +191,17 @@ AUDITAR → DEFINIR MENOR ESCOPO → IMPLEMENTAR → TESTAR → CORRIGIR → TES
 **Critérios de aceitação:** pacote completo de evidências e validação final.
 **Estado:** PLANNED.
 **Evidência esperada:** evidências de produção + aprovação CTO.
+
+## Registro da EXECUÇÃO 02
+- Escopo: auditoria integral do legado Argos e infraestrutura acessível.
+- Argos: `gusborba9-star/argos-intelligence` permaneceu intocado.
+- Supabase Argos: auditado em modo somente leitura; nenhuma alteração destrutiva executada.
+- Vercel: inventário acessível auditado; nenhum projeto, deployment, domínio ou variável alterado.
+- Classificação: REUTILIZAR / ADAPTAR / REESCREVER / DESCARTAR / PRESERVAR TEMPORARIAMENTE registrada na matriz de reutilização.
+- Segurança: histórico de exposição de credenciais, API key legada, autenticação por query string, service-role usage, RLS/security-definer e Edge Function privilegiada registrados.
+- Evidências: baseline Argos `a1b3c0b2d1df24008d607c7b70ee98661b60ddd0`; Veritas baseline `dd46cbd9cce89a5f730a5f953d9ca959d638b6a5`; dados Supabase observados em 2026-09-27.
+- Limitações: Vercel Argos não verificado, logs Supabase não verificados, secrets não lidos e dependency audit externo não executado.
+- Estado de fechamento: VALIDATED.
 
 ## Registro da EXECUÇÃO 01
 - Escopo: fundação documental.
